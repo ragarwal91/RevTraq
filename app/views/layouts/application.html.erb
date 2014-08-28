@@ -7,7 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="header-block">
+    <h1><%= link_to('RevTraq', root_path) %></h1>
+    <div id="header-content">
+      <% if user_signed_in? %>
+        Welcome back, <%= current_user.first_name %>! |
+        <%= link_to('My Profile', user_path(current_user)) %> |
+        <%= link_to('Sign out', destroy_user_session_path, method: :delete)%>
+      <% else %>
+        <%= link_to('Sign in', new_user_session_path) %> |
+        <%= link_to('Sign up', new_user_registration_path) %> |
+      <% end %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+  </div>
 
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  
 <%= yield %>
 
 </body>

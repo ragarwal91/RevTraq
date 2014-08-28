@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
-# Use postgresql as the database for Active Record
+# Use postgres as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -26,6 +25,24 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+group :development, :test  do
+  gem 'pry-rails'
+  # gem 'better_errors'
+  # gem 'binding_of_caller'
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'awesome_print'
+  gem 'shoulda-matchers', require: false
+  gem 'rspec-collection_matchers'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'metric_fu'
+end
+
+gem 'devise'
+gem 'backbars'
+gem 'cancancan', '~> 1.9'
+gem 'rails_12factor', group: :production
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -37,4 +54,3 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
