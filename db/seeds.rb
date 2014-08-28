@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Business.destroy_all
+
+
+tb = Business.create(
+  name:     "HAMPot",
+  address:  "915 Broadway",
+  city:     "New York, NY",
+  zip_code: 10010,
+  logo:     "http://i.imgur.com/lNuPPm5.png",
+  user_id:  2
+)

@@ -1,0 +1,13 @@
+<div id="business-info">
+  <p>Business Name: <%= @business.name %></p>
+  <p>Business Address: <%= @business.address %>, <%= @business.city %>, <%= @business.zip_code %></p>
+  <p>Business Logo: <%= @business.logo %></p>
+ <!--  <img src="<#%= @business.logo %>" alt=""> -->
+  <p>Business Owner: <%= @business.user.first_name %> <%= @business.user.last_name %></p>
+  <% @business.sales.each do |sale| %>
+
+    <p>$<%= sale.daily_sale %></p>
+    <p><%= sale.sale_date %></p>
+    
+  <% end %>
+</div>

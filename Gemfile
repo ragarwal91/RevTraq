@@ -40,7 +40,7 @@ end
 
 gem 'devise'
 gem 'backbars'
-gem 'cancancan', '~> 1.9'
+# gem 'cancancan', '~> 1.9'
 gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password

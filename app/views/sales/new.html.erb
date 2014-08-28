@@ -1,0 +1,23 @@
+<%= form_for @sale do |f| %>
+
+  <%= f.label :sale_date %>
+  <%= f.date_field :sale_date %>
+
+  <%= f.label :daily_sale %>
+  <%= f.text_field :daily_sale %>
+
+  <%= f.label :temperature %>
+  <%= f.text_field :temperature %>
+
+  <%= f.label :weather_type %>
+  <%= f.text_field :weather_type %>
+
+  <%= f.label :notes %>
+  <%= f.text_area :notes %>
+
+  <%= f.label :business_id %>
+  <%= f.text_field :business_id %>
+
+  <%= f.submit %>
+
+<% end %>
