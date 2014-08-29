@@ -11,5 +11,6 @@
     
   <% end %>
 </div>
+<%= render partial: 'sales/form', locals: {business: @business, sale: Sale.new} %>
 
 <%= link_to('New Business', new_business_path) %>

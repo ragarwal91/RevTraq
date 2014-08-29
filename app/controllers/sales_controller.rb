@@ -12,7 +12,9 @@ class SalesController < ApplicationController
     @sale = Sale.new(sale_params)
     if @sale.save
       session[:current_user] = @sale.id
-      redirect_to(root_path)
+      business = Business.find(params[:business_id])
+      business.sales.push(@sale)
+      redirect_to business_path(business)
     else
       render(:new)
     end
