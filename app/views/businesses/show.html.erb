@@ -4,10 +4,12 @@
   <p>Business Logo: <%= @business.logo %></p>
  <!--  <img src="<#%= @business.logo %>" alt=""> -->
   <p>Business Owner: <%= @business.user.first_name %> <%= @business.user.last_name %></p>
-  <% @business.sales.each do |sale| %>
+    <% @business.sales.each do |sale| %>
 
     <p>$<%= sale.daily_sale %></p>
     <p><%= sale.sale_date %></p>
     
   <% end %>
 </div>
+
+<%= link_to('New Business', new_business_path) %>

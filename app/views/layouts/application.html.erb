@@ -14,7 +14,7 @@
         Welcome back, <%= current_user.first_name %>! |
         <%= link_to('My Profile', user_path(current_user)) %> |
         <%= link_to('Sign out', destroy_user_session_path, method: :delete)%> |
-        <%= link_to('Add Sale', new_sale_path) %> |
+        <%#= link_to('New Sales', new_business_sale) %>
         <a href="/businesses/3">My Business</a>
       <% else %>
         <%= link_to('Sign in', new_user_session_path) %> |
