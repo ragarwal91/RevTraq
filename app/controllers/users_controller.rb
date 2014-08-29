@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  before_action :authorize, only: [:edit, :update, :destroy]
+  before_action :authorize, only: [:destroy]
 
   def show
     @user = User.find(params[:id])
     render json: @user
-
   end
 
   def new
