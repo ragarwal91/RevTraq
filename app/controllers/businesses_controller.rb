@@ -12,8 +12,10 @@ class BusinessesController < ApplicationController
 
   def create
     @business = Business.new(business_params)
+    @business.user_id = current_user.id
     if @business.save
-      session[:current_user] = @business.id
+      # session[:current_user] = @business.id
+      binding.pry
       redirect_to(root_path)
     else
       render(:new)
