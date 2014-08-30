@@ -10,6 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require d3.min
+//= require d3.layout.min
+//= require rickshaw.min
 //= require jquery
 //= require jquery_ujs
 //= require underscore

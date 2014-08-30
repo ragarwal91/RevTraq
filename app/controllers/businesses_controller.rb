@@ -4,6 +4,7 @@ class BusinessesController < ApplicationController
     @business = Business.find(params[:id])
     @sale = Sale.new
     @sales = Sale.all
+    # render json: @business
   end  
 
   def new
