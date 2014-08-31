@@ -2,6 +2,7 @@ class SalesController < ApplicationController
 
   def show
     @sale = Sale.find(params[:id])
+    # render json: @sale
   end
 
   def new

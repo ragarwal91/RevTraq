@@ -40,6 +40,7 @@ end
 
 gem 'devise'
 gem 'backbars'
+gem 'httparty'
 # gem 'cancancan', '~> 1.9'
 gem 'rails_12factor', group: :production
 

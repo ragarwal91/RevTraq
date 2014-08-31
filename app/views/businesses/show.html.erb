@@ -4,33 +4,53 @@
   <p>Business Logo: <%= @business.logo %></p>
  <!--  <img src="<#%= @business.logo %>" alt=""> -->
   <p>Business Owner: <%= @business.user.first_name %> <%= @business.user.last_name %></p>
+  <p><%= @business.city %></p>
+  <p>Todays Weather: <%= @weather_api['main']['temp'] %></p>
+  <p><%= @weather_api['weather'][0]['main'] %></p>
 
   <div id="chart" style="width:100%; height:400px;"></div>
 
   <script>
 
-  var data = [
-  <% @business.sales.each do |sale| %>
-    {
-      x: <%= sale.id %>,
-      y: <%= sale.daily_sale %>
+  var chart = c3.generate({
+
+    data: {
+        x: 'x',
+//        xFormat: '%Y%m%d', // 'xFormat' can be used as custom format of 'x'
+        columns: [
+            ['x',
+
+            <% @business.sales.each do |sale| %>
+             '<%= sale.sale_date %>', <% end %>],
+//            ['x', '20130101', '20130102', '20130103', '20130104', '20130105', '20130106'],
+            ['data1', <% @business.sales.each do |sale| %>
+            <%= sale.daily_sale %>,<% end %>],
+        ]
     },
-  <% end %>
-  ];
 
-var graph = new Rickshaw.Graph( {
-        element: document.querySelector("#chart"),
-        width: 580,
-        height: 250,
-        series: [ {
-                color: 'steelblue',
-                data: data
-        } ]
-} );
+    colors: {
+      pattern: "#3aa4c4"
+    },
 
-graph.render();
+    axis: {
+        x: {
+            type: 'timeseries',
+            tick: {
+                format: '%Y-%m-%d'
+            }
+        }
+    }
+});
 
 </script>
+
+<% @business.sales.each do |sale| %>
+  <p>sale id: <%= sale.id %></p>
+  <p>sale date: <%= sale.sale_date %></p>
+  <p>sale: <%= sale.daily_sale %></p>
+  <p>sale business id: <%= sale.business.id %></p>
+  <hr>
+<% end %>
 
 
 </div>
