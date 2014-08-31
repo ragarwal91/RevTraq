@@ -10,6 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require d3.min
+//= require d3.layout.min
+//= require rickshaw.min
 //= require jquery
 //= require jquery_ujs
 //= require underscore
@@ -23,7 +26,7 @@
 //= require_tree ./templates
 //= require_tree .
 
-
+console.log('hello bro');
 App = {
   Models:      {},
   Views:       {},
@@ -32,5 +35,8 @@ App = {
 };
 
 $(document).ready(function() {
-  
+  console.log('document load')
+  App.Routers.appRouter = new App.Routers.AppRouter();
+  Backbone.history.start();
+
 });

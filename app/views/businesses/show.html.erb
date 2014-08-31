@@ -4,13 +4,37 @@
   <p>Business Logo: <%= @business.logo %></p>
  <!--  <img src="<#%= @business.logo %>" alt=""> -->
   <p>Business Owner: <%= @business.user.first_name %> <%= @business.user.last_name %></p>
-    <% @business.sales.each do |sale| %>
 
-    <p>$<%= sale.daily_sale %></p>
-    <p><%= sale.sale_date %></p>
-    
+  <div id="chart" style="width:100%; height:400px;"></div>
+
+  <script>
+
+  var data = [
+  <% @business.sales.each do |sale| %>
+    {
+      x: <%= sale.id %>,
+      y: <%= sale.daily_sale %>
+    },
   <% end %>
+  ];
+
+var graph = new Rickshaw.Graph( {
+        element: document.querySelector("#chart"),
+        width: 580,
+        height: 250,
+        series: [ {
+                color: 'steelblue',
+                data: data
+        } ]
+} );
+
+graph.render();
+
+</script>
+
+
 </div>
 <%= render partial: 'sales/form', locals: {business: @business, sale: Sale.new} %>
 
 <%= link_to('New Business', new_business_path) %>
+

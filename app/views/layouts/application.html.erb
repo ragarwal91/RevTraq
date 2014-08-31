@@ -12,10 +12,11 @@
     <div id="header-content">
       <% if user_signed_in? %>
         Welcome back, <%= current_user.first_name %>! |
-        <%= link_to('My Profile', user_path(current_user)) %> |
+        <a href="/#users/<%= current_user.id %>" class="user-info">My Profile</a>
+        <%#= link_to('My Profile', user_path(current_user, class: "my-profile-link")) %> |
         <%= link_to('Sign out', destroy_user_session_path, method: :delete)%> |
         <%#= link_to('New Sales', new_business_sale) %>
-        <a href="/businesses/3">My Business</a>
+        <a href="/#businesses/3" class="business-info-button">My Business</a>
       <% else %>
         <%= link_to('Sign in', new_user_session_path) %> |
         <%= link_to('Sign up', new_user_registration_path) %> |
@@ -27,6 +28,12 @@
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+
+  <div id="user-info"></div>
+  <div id="business-info"></div>
+  <div id="new-sale-info"></div>
+  <div id="sale-graph-info"></div>
+
   
 <%= yield %>
 
