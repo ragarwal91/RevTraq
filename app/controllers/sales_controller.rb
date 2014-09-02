@@ -1,5 +1,13 @@
 class SalesController < ApplicationController
 
+  before_action :determine_scope
+
+  def index
+    @sales = @scope.all
+    render json: @sales
+  
+  end
+
   def show
     @sale = Sale.find(params[:id])
     # render json: @sale
@@ -42,6 +50,12 @@ class SalesController < ApplicationController
   end
 
   private
+
+  def determine_scope
+    # @scope = params[:user_id] ? User.find(params[:user_id]).games : Game
+    @scope = params[:business_id] ? Business.find(params[:business_id]).sales : Sale
+  end
+
   def sale_params
     params.require(:sale).permit(:sale_date, :temperature, :weather_type, :notes, :business_id, :daily_sale)
   end

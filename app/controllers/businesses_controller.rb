@@ -1,11 +1,16 @@
 class BusinessesController < ApplicationController
 
+  def index
+    @businesses = Business.find(params[:sale_id]).businesses
+    render json: @businesses
+  end
+
   def show
     @business = Business.find(params[:id])
     @sale = Sale.new
     @sales = Sale.all
     @weather_api = Weather.search(@business.city)
-    # render json: @business
+    render json: @business
   end  
 
   def new

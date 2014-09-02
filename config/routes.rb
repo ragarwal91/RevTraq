@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "/"                  => 'welcome#index', as: 'root'
   resources :users
   resources :businesses, except: [:index] do
-    resources :sales, except: [:index]
+    resources :sales
   end
   # /my_sales
 end

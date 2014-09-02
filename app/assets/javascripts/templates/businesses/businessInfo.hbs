@@ -2,21 +2,3 @@
 <p>Business Name: {{name}}</p>
 <p>Business Address: {{address}}, {{city}}, {{zip_code}}</p>
 <p>Business Logo: {{logo}}</p>
-
-
-<div id="business-info">
-  
-  
-  
-{{!--  <!--  <img src="<#%= @business.logo %>" alt=""> -->
-  <p>Business Owner: <%= @business.user.first_name %> <%= @business.user.last_name %></p>
-    <% @business.sales.each do |sale| %>
-
-    <p>$<%= sale.daily_sale %></p>
-    <p><%= sale.sale_date %></p>
-    
-  <% end %>
-</div>
-<%= render partial: 'sales/form', locals: {business: @business, sale: Sale.new} %>
-
-<%= link_to('New Business', new_business_path) %> --}}
