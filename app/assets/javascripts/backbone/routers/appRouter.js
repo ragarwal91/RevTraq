@@ -3,7 +3,8 @@ App.Routers.AppRouter = Backbone.Router.extend({
     '': 'index',
     'users/:id': 'showUser',
     'users/:id/edit': 'editUser',
-    'businesses/:id': 'showBusinessInfo'
+    'businesses/:id': 'showBusinessInfo',
+    'businesses/:id/sales/new': 'newSale'
     // 'businesses/:id/sales': 'showSales'
   },
 
@@ -13,7 +14,9 @@ App.Routers.AppRouter = Backbone.Router.extend({
     App.Models.business  = new App.Models.BusinessInfo();
     App.Collections.sale = new App.Collections.SalesCollection();
     App.Models.sale      = new App.Models.Sale();
-
+    App.Views.saleForm   = new App.Views.NewSaleForm({
+      collection: App.Collections.sale
+    });
 
 
   },
@@ -54,7 +57,38 @@ App.Routers.AppRouter = Backbone.Router.extend({
     App.salesInfoView.collection.fetch({url: '/businesses/'+ id + '/sales'});
     console.log(App.salesInfoView.collection.fetch({url: '/businesses/'+ id + '/sales'}));
     // App.salesInfoView.collectionOh.fetch({url: '/businesses/'+ id + '/sales'})
-  }
+    
+        var chart = c3.generate({
+
+        data: {
+            x: 'x',
+    //        xFormat: '%Y%m%d', // 'xFormat' can be used as custom format of 'x'
+            columns: [
+                ['x','2014-01-01', '2014-01-02', '2014-01-03'],
+    //            ['x', '20130101', '20130102', '20130103', '20130104', '20130105', '20130106'],
+                ['data1', 2014, 4032, 2049],
+            ]
+        },
+
+        colors: {
+          pattern: "#3aa4c4"
+        },
+
+        axis: {
+            x: {
+                type: 'timeseries',
+                tick: {
+                    format: '%Y-%m-%d'
+                }
+            }
+        }
+    });
+
+  },
+
+  newSale: function(id) {
+    console.log('render new sale');
+  } 
 
 // App.salesInfoView.model.fetch({url: '/businesses/'+ id + '/sales'}, success: function(){console.log(App.salesInfoView.model)})
 

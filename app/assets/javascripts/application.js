@@ -38,4 +38,6 @@ $(document).ready(function() {
   App.Routers.appRouter = new App.Routers.AppRouter();
   Backbone.history.start();
 
+  
+
 });
