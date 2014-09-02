@@ -6,6 +6,7 @@ App.Views.GraphView = Backbone.View.extend({
   },
 
   render: function(){
+    this.$el.empty();
     console.log('graph render');
 
 
@@ -43,9 +44,12 @@ App.Views.GraphView = Backbone.View.extend({
             ]
         },
 
-        colors: {
-          pattern: "#3aa4c4"
-        },
+        color: { pattern: ['#1f77b4'] },
+
+
+        // colors: {
+        //   pattern: "#3aa4c4"
+        // },
 
         axis: {
             x: {
