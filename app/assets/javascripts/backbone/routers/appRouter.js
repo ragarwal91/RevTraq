@@ -18,6 +18,13 @@ App.Routers.AppRouter = Backbone.Router.extend({
       collection: App.Collections.sale
     });
 
+    // App.salesInfoView = new App.Views.SaleList({
+    //   collection: App.Collections.sale
+    // });
+
+    App.Views.graph   = new App.Views.GraphView({
+      collection: App.Collections.sale
+    });
 
   },
 
@@ -48,41 +55,17 @@ App.Routers.AppRouter = Backbone.Router.extend({
     });
     App.businessInfoView.model.fetch({url: '/businesses/'+ id});
     
-    console.log('sales info');
-    App.salesInfoView = new App.Views.SaleList({
-      collection: App.Collections.sale
-    });
-    console.log(App.salesInfoView.collection);
+    // console.log('sales info');
+    // App.salesInfoView = new App.Views.SaleList({
+    //   collection: App.Collections.sale
+    // });
+    // console.log(App.salesInfoView.collection);
     // debugger;
-    App.salesInfoView.collection.fetch({url: '/businesses/'+ id + '/sales'});
-    console.log(App.salesInfoView.collection.fetch({url: '/businesses/'+ id + '/sales'}));
+    // App.salesInfoView.collection.fetch({url: '/businesses/'+ id + '/sales'});
+    App.Views.graph.collection.fetch({url: '/businesses/' + id + '/sales'});
+    // console.log(App.salesInfoView.collection.fetch({url: '/businesses/'+ id + '/sales'}));
     // App.salesInfoView.collectionOh.fetch({url: '/businesses/'+ id + '/sales'})
-    
-        var chart = c3.generate({
-
-        data: {
-            x: 'x',
-    //        xFormat: '%Y%m%d', // 'xFormat' can be used as custom format of 'x'
-            columns: [
-                ['x','2014-01-01', '2014-01-02', '2014-01-03'],
-    //            ['x', '20130101', '20130102', '20130103', '20130104', '20130105', '20130106'],
-                ['data1', 2014, 4032, 2049],
-            ]
-        },
-
-        colors: {
-          pattern: "#3aa4c4"
-        },
-
-        axis: {
-            x: {
-                type: 'timeseries',
-                tick: {
-                    format: '%Y-%m-%d'
-                }
-            }
-        }
-    });
+  
 
   },
 

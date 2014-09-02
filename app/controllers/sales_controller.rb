@@ -10,7 +10,7 @@ class SalesController < ApplicationController
 
   def show
     @sale = Sale.find(params[:id])
-    # render json: @sale
+    render json: @sale
   end
 
   def new
@@ -18,11 +18,24 @@ class SalesController < ApplicationController
   end
 
   def create
+    business = Business.find(params[:business_id])
+    @weather_api = Weather.search(business.city)
+    # binding.pry
+    api_temp = @weather_api["main"]["temp"].to_s
+    api_weather_type = @weather_api["weather"][0]["main"]
+    # binding.pry
     @sale = Sale.new(sale_params)
+    
+    # binding.pry
     if @sale.save
       session[:current_user] = @sale.id
       business = Business.find(params[:business_id])
+      # binding.pry
       business.sales.push(@sale)
+      @sale.temperature  = api_temp
+      @sale.weather_type = api_weather_type
+      # binding.pry
+
       redirect_to business_path(business)
     else
       render(:new)

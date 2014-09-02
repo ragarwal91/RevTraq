@@ -22,7 +22,7 @@ class BusinessesController < ApplicationController
     @business.user_id = current_user.id
     if @business.save
       # session[:current_user] = @business.id
-      binding.pry
+      # binding.pry
       redirect_to(root_path)
     else
       render(:new)

@@ -1,5 +1,6 @@
 App.Collections.SalesCollection = Backbone.Collection.extend({
   model: App.Models.Sale,
+  // QUESTION!!!
   url: "/businesses/3/sales",
 
   initialize: function() {

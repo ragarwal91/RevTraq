@@ -5,7 +5,7 @@ App.Views.NewSaleForm = Backbone.View.extend({
     console.log('new sale form');
     this.template = HandlebarsTemplates['sales/newSaleForm'];
     this.listenTo(this.collection, 'add', this.render);
-    this.listenTo(this.collection, 'change', this.render);
+    // this.listenTo(this.collection, 'change', this.render);
     this.render();
   },
 
@@ -28,6 +28,6 @@ App.Views.NewSaleForm = Backbone.View.extend({
       notes        : $('textarea[name="new-notes"]').val()
     }
     App.Collections.sale.create(formData);
-    App.Routers.appRouter.navigate('/#businesses/3', {trigger:true});
+    // App.Routers.appRouter.navigate('/#businesses/3', {trigger:true});
   }
 });
