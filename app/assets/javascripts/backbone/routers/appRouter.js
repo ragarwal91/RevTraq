@@ -47,23 +47,25 @@ App.Routers.AppRouter = Backbone.Router.extend({
       model: App.Models.business
     });
     App.businessInfoView.model.fetch({url: '/businesses/'+ id});
-    App.Views.saleForm   = new App.Views.NewSaleForm({
+    App.Views.saleForm  = new App.Views.NewSaleForm({
       collection: App.Collections.sale
     });
 
-    App.Views.lastDay   = new App.Views.LastDay({
+    App.Views.lastDay  = new App.Views.LastDay({
       collection: App.Collections.daySale
     });  
     console.log(App.Views.lastDay.collection.fetch({url: '/businesses/'+ id + '/sales/last_day'}));
     App.Views.lastDay.collection.fetch({url: '/businesses/'+ id + '/sales/last_day'});
-    
-    App.Views.graph   = new App.Views.GraphView({
+
+    App.Views.graph    = new App.Views.GraphView({
       collection: App.Collections.sale
     });
 
     App.Views.graph.collection.businessId = id;
     App.Views.graph.collection.fetch({reset: true});
-    
+    App.Collections.weekSale.fetch({reset: true});
+    App.Collections.monthSale.fetch({reset: true});
+
   },
 
   showMonthSaleGraph: function() {

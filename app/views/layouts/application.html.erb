@@ -5,26 +5,34 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript" src="//use.typekit.net/qbt3afq.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
   <div id="header-block">
-    <h1><%= link_to('RevTraq', root_path) %></h1>
+    
     <div id="header-content">
-      <% if user_signed_in? %>
-        Welcome back, <%= current_user.first_name %>! |
-        <a href="/#users/<%= current_user.id %>" class="user-info">My Profile</a>
-        <%#= link_to('My Profile', user_path(current_user, class: "my-profile-link")) %> |
-        <%= link_to('Sign out', destroy_user_session_path, method: :delete)%> |
-        <%#= link_to('New Sales', new_business_sale) %>
-        <% current_user.businesses.each do |business| %>
-          <a href="/#businesses/<%= business.id %>"><%= business.name %></a>
+      <div id="main-nav">
+        <h1><%= link_to('RevTraq', root_path) %></h1>
+        <% if user_signed_in? %>
+          Welcome back, <%= current_user.first_name %>! |
+          <a href="/#users/<%= current_user.id %>" class="user-info">My Profile</a>
+          <%#= link_to('My Profile', user_path(current_user, class: "my-profile-link")) %> |
+          <%= link_to('Sign out', destroy_user_session_path, method: :delete)%> |
+          <%#= link_to('New Sales', new_business_sale) %>
+          <ul class="business-list">
+            <% current_user.businesses.each do |business| %>
+            <li><a class="business-info-link" href="/#businesses/<%= business.id %>"><%= business.name %></a></li>
+          <% end %>
+          </ul>
+          
+        <% else %>
+          <%= link_to('Sign in', new_user_session_path) %> |
+          <%= link_to('Sign up', new_user_registration_path) %> |
         <% end %>
-      <% else %>
-        <%= link_to('Sign in', new_user_session_path) %> |
-        <%= link_to('Sign up', new_user_registration_path) %> |
-      <% end %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
     </div>
   </div>
 
@@ -33,15 +41,16 @@
 
   <div id="main-container">
     <div id="user-info"></div>
+    <div id="new-sale-form"></div>
     <div id="business-info"></div>
+    <div id="day-sale"></div>
     <div id="new-sale-info"></div>
     <div id="sales"></div>
-    <div id="new-sale-form"></div>
-    <div id="chart" style="width:100%; height:400px;"></div>
+    
     <div id="graph-info"></div>
+    <div id="chart"></div>
     <div id="last-sale-info"></div>
     <div id="sale-graph-info"></div>
-    <div id="day-sale"></div>
   </div>
 
   

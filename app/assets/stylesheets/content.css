@@ -1,0 +1,10 @@
+#main-container {width: 80%;float:right;}
+#business-info {width: 45%;float:right;}
+#new-sale-form {width: 45%;float:left;margin-bottom: 30px;}
+#new-sale-form input[name="new-sale-date"] {width: 70%;padding: 15px 8px;border: 2px solid #1F77B4;}
+#new-sale-form input[name="new-daily-sale"] {width: 70%;padding: 15px 8px;border: 2px solid #1F77B4;}
+#new-sale-form textarea {width: 70%;border: 2px solid #1F77B4;resize: none;padding: 15px 8px;}
+#new-sale-form button {width: 45%;background: #FFF;border:2px solid #1F77B4;padding: 18px 12px;cursor: pointer;margin-left: 13%;font-size: 14px;}
+#graph-info {width: 100%;float:left;}
+#chart {width: 80%;float:left;height: 400px;margin-left: 10%;}
+#day-sale {width: 45%;float:right;}
