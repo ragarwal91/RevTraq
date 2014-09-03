@@ -1,6 +1,6 @@
-App.Views.SaleList = Backbone.View.extend({
-  el: '#sales',
-
+App.Views.LastSaleInfo = Backbone.View.extend({
+  el : '#last-sale-info',
+  
   initialize: function() {
     console.log('sale list view initialized');
     this.listenTo(this.collection, 'reset', this.render);

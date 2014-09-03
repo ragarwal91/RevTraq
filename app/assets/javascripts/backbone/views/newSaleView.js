@@ -19,6 +19,7 @@ App.Views.NewSaleForm = Backbone.View.extend({
   },
 
   newSale: function() {
+    // this.$el.empty();
     console.log('new form');
     var formData = {
       sale_date    : $('input[name="new-sale-date"]').val(),

@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>RevtraqApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
@@ -16,7 +16,9 @@
         <%#= link_to('My Profile', user_path(current_user, class: "my-profile-link")) %> |
         <%= link_to('Sign out', destroy_user_session_path, method: :delete)%> |
         <%#= link_to('New Sales', new_business_sale) %>
-        <a href="/#businesses/3" class="business-info-button">My Business</a>
+        <% current_user.businesses.each do |business| %>
+          <a href="/#businesses/<%= business.id %>"><%= business.name %></a>
+        <% end %>
       <% else %>
         <%= link_to('Sign in', new_user_session_path) %> |
         <%= link_to('Sign up', new_user_registration_path) %> |
@@ -26,17 +28,21 @@
     </div>
   </div>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <p class="notice"><%#= notice %></p>
+  <p class="alert"><%#= alert %></p>
 
-  <div id="user-info"></div>
-  <div id="business-info"></div>
-  <div id="new-sale-info"></div>
-  <div id="sales"></div>
-  <div id="new-sale-form"></div>
-  <div id="chart" style="width:100%; height:400px;"></div>
-  
-  <div id="sale-graph-info"></div>
+  <div id="main-container">
+    <div id="user-info"></div>
+    <div id="business-info"></div>
+    <div id="new-sale-info"></div>
+    <div id="sales"></div>
+    <div id="new-sale-form"></div>
+    <div id="chart" style="width:100%; height:400px;"></div>
+    <div id="graph-info"></div>
+    <div id="last-sale-info"></div>
+    <div id="sale-graph-info"></div>
+    <div id="day-sale"></div>
+  </div>
 
   
 <%= yield %>

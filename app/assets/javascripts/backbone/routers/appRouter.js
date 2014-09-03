@@ -10,27 +10,23 @@ App.Routers.AppRouter = Backbone.Router.extend({
 
   initialize: function() {
     console.log('app initialize');
-    App.Models.user      = new App.Models.User();
-    App.Models.business  = new App.Models.BusinessInfo();
-    App.Collections.sale = new App.Collections.SalesCollection();
-    App.Models.sale      = new App.Models.Sale();
-    App.Views.saleForm   = new App.Views.NewSaleForm({
-      collection: App.Collections.sale
-    });
-
-    // App.salesInfoView = new App.Views.SaleList({
-    //   collection: App.Collections.sale
-    // });
-
-    App.Views.graph   = new App.Views.GraphView({
-      collection: App.Collections.sale
-    });
-
+    App.Models.user           = new App.Models.User();
+    App.Models.business       = new App.Models.BusinessInfo();
+    App.Collections.sale      = new App.Collections.SalesCollection();
+    App.Collections.daySale   = new App.Collections.LastDaySaleCollection();
+    App.Collections.weekSale  = new App.Collections.LastWeekSaleCollection();
+    App.Collections.monthSale = new App.Collections.LastMonthSaleCollection();
+    App.Models.sale           = new App.Models.Sale();
+    
+    
   },
 
   events: {
-    'click .edit-button': 'showUser',
+    'click .edit-button': 'editUser',
     'click .business-info-button': 'showBusinessInfo',
+    'click .last-week': 'showWeekSaleGraph',
+    'click .last-month': 'showMonthSaleGraph'
+    // 'click .new_sale': 'showLastSale'
     // 'click .sales-button': 'showSales'
   },
 
@@ -39,9 +35,6 @@ App.Routers.AppRouter = Backbone.Router.extend({
       model: App.Models.user
     });
     App.usersView.model.fetch({url: '/users/'+ id})
-    // console.log('user route view');
-    // var user = new User({id: id});
-    // user.fetch();
   },
 
   editUser: function(id) {
@@ -54,37 +47,37 @@ App.Routers.AppRouter = Backbone.Router.extend({
       model: App.Models.business
     });
     App.businessInfoView.model.fetch({url: '/businesses/'+ id});
-    
-    // console.log('sales info');
-    // App.salesInfoView = new App.Views.SaleList({
-    //   collection: App.Collections.sale
-    // });
-    // console.log(App.salesInfoView.collection);
-    // debugger;
-    // App.salesInfoView.collection.fetch({url: '/businesses/'+ id + '/sales'});
-    App.Views.graph.collection.fetch({url: '/businesses/' + id + '/sales'});
-    // console.log(App.salesInfoView.collection.fetch({url: '/businesses/'+ id + '/sales'}));
-    // App.salesInfoView.collectionOh.fetch({url: '/businesses/'+ id + '/sales'})
-  
+    App.Views.saleForm   = new App.Views.NewSaleForm({
+      collection: App.Collections.sale
+    });
 
+    App.Views.lastDay   = new App.Views.LastDay({
+      collection: App.Collections.daySale
+    });  
+    console.log(App.Views.lastDay.collection.fetch({url: '/businesses/'+ id + '/sales/last_day'}));
+    App.Views.lastDay.collection.fetch({url: '/businesses/'+ id + '/sales/last_day'});
+    
+    App.Views.graph   = new App.Views.GraphView({
+      collection: App.Collections.sale
+    });
+
+    App.Views.graph.collection.businessId = id;
+    App.Views.graph.collection.fetch({reset: true});
+    
   },
 
-  newSale: function(id) {
-    console.log('render new sale');
-  } 
+  showMonthSaleGraph: function() {
+    console.log('last month');
+    App.Views.lastMonthGraph   = new App.Views.LastMonthSaleGraphView({
+      collection: App.Collections.monthSale
+    });
+  },
 
-// App.salesInfoView.model.fetch({url: '/businesses/'+ id + '/sales'}, success: function(){console.log(App.salesInfoView.model)})
-
-  // showSales: function(id) {
-  //   console.log('sales info');
-  //   App.salesInfoView = new App.Views.SaleList({
-  //     collection: App.Collections.sale
-  //   });
-  //   console.log(App.salesInfoView.collection);
-  //   // debugger;
-  //   App.salesInfoView.collection.fetch({url: '/businesses/'+ id + '/sales'});
-  //   console.log(App.salesInfoView.collection.fetch({url: '/businesses/'+ id + '/sales'}));
-  //   // App.salesInfoView.collectionOh.fetch({url: '/businesses/'+ id + '/sales'})
-  // }
+  showWeekSaleGraph: function() {
+    console.log('last week');
+    App.Views.lastWeekGraph   = new App.Views.LastWeekSaleGraphView({
+      collection: App.Collections.weekSale
+    });
+  }
 
 });

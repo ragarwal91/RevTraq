@@ -20,22 +20,16 @@ class SalesController < ApplicationController
   def create
     business = Business.find(params[:business_id])
     @weather_api = Weather.search(business.city)
-    # binding.pry
     api_temp = @weather_api["main"]["temp"].to_s
     api_weather_type = @weather_api["weather"][0]["main"]
-    # binding.pry
     @sale = Sale.new(sale_params)
-    
-    # binding.pry
+    @sale.temperature  = api_temp
+    @sale.weather_type = api_weather_type
     if @sale.save
       session[:current_user] = @sale.id
       business = Business.find(params[:business_id])
       # binding.pry
       business.sales.push(@sale)
-      @sale.temperature  = api_temp
-      @sale.weather_type = api_weather_type
-      # binding.pry
-
       redirect_to business_path(business)
     else
       render(:new)
@@ -53,6 +47,30 @@ class SalesController < ApplicationController
     else
       render(:edit)
     end
+  end
+
+  def last_day_sale
+    business = Business.find(params[:business_id])
+    @day_sale = business.sales.where("sale_date > ?", 1.days.ago)
+    render json: @day_sale
+  end
+
+  def last_week_sales
+    business = Business.find(params[:business_id])
+    @week_sales = business.sales.where("sale_date > ?", 7.days.ago)
+    render json: @week_sales
+  end
+
+  def last_month_sales
+    business = Business.find(params[:business_id])
+    @month_sales = business.sales.where("sale_date > ?", 30.days.ago)
+    render json: @month_sales
+  end
+
+  def last_year_sales
+    business = Business.find(params[:business_id])
+    @year_sales = business.sales.where("sale_date > ?", 365.days.ago)
+    render json: @year_sales
   end
 
   def destroy

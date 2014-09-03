@@ -1,15 +1,16 @@
-App.Views.GraphView = Backbone.View.extend({
+App.Views.LastWeekSaleGraphView = Backbone.View.extend({
   el: '#graph-info',
+
+  events: {
+    'click .last-week': 'render'
+  },
   
   initialize: function() {
-    console.log('new graph view');
+    console.log('new week graph view');
     this.template = HandlebarsTemplates['businesses/graph'];
     this.listenTo(this.collection, 'add', this.render);
     this.listenTo(this.collection, 'change', this.render);
-    this.listenTo(this.collection, 'reset', this.render);
   },
-
-
 
   render: function(){
     this.$el.empty();
@@ -19,11 +20,11 @@ App.Views.GraphView = Backbone.View.extend({
       data: {
         x: 'x',
         columns: [
-          ["x"].concat(this.collection.map(function(sale) {
+          ["x"].concat(App.Views.lastWeekGraph.collection.map(function(sale) {
             return sale.get('sale_date') 
           })),
           
-          ["Sale"].concat(this.collection.map(function(sale) {
+          ["Sale"].concat(App.Views.lastWeekGraph.collection.map(function(sale) {
             return sale.get('daily_sale') 
           })),
         ]
@@ -40,25 +41,9 @@ App.Views.GraphView = Backbone.View.extend({
           }
         }
     });
-    console.log(chart);
   },
 
   events: {
-    'click .last-month': 'showLastMonth',
-    'click .last-week': 'showLastWeek'
-  },
-
-  showLastMonth: function() {
-    this.collection = App.Collections.monthSale;
-    this.collection.fetch({reset: true});
-    this.render();
-  },
-
-  showLastWeek: function() {
-    this.collection = App.Collections.weekSale;
-    this.collection.fetch({reset: true});
-    this.render();
-  },
-
-
+    
+  }
 });
