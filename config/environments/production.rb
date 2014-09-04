@@ -66,13 +66,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
-    port:                587,
+    port:                 587,
     domain:              'example.com',
     user_name:            ENV["REVTRAQ_USERNAME"],
     password:             ENV["REVTRAQ_PASSWORD"],
     authentication:      'plain',
     enable_starttls_auto: true  }
-  config.action_mailer.default_url_options = { host: 'young-scrubland-8264.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'revtraq.com' }
 
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
