@@ -2,7 +2,6 @@ App.Views.SaleList = Backbone.View.extend({
   el: '#sales',
 
   initialize: function() {
-    console.log('sale list view initialized');
     this.listenTo(this.collection, 'reset', this.render);
     this.listenTo(this.collection, 'add', this.render);
     this.render();
@@ -10,8 +9,6 @@ App.Views.SaleList = Backbone.View.extend({
 
   render: function() {
     this.$el.empty();
-    console.log('sale list view rendered');
-    // debugger;
     this.collection.each(function(sale) {
       var saleView = new App.Views.Sale({
         model: sale

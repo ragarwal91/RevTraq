@@ -5,11 +5,9 @@ App.Routers.AppRouter = Backbone.Router.extend({
     'users/:id/edit': 'editUser',
     'businesses/:id': 'showBusinessInfo',
     'businesses/:id/sales/new': 'newSale'
-    // 'businesses/:id/sales': 'showSales'
   },
 
   initialize: function() {
-    console.log('app initialize');
     App.Models.user           = new App.Models.User();
     App.Models.business       = new App.Models.BusinessInfo();
     App.Collections.sale      = new App.Collections.SalesCollection();
@@ -26,8 +24,6 @@ App.Routers.AppRouter = Backbone.Router.extend({
     'click .business-info-button': 'showBusinessInfo',
     'click .last-week': 'showWeekSaleGraph',
     'click .last-month': 'showMonthSaleGraph'
-    // 'click .new_sale': 'showLastSale'
-    // 'click .sales-button': 'showSales'
   },
 
   showUser: function(id) {
@@ -40,11 +36,9 @@ App.Routers.AppRouter = Backbone.Router.extend({
   },
 
   editUser: function(id) {
-    console.log('edit route');
   },
 
   showBusinessInfo: function(id) {
-    console.log('business info');
     App.businessInfoView = new App.Views.BusinessInfoView({
       model: App.Models.business
     });
@@ -55,8 +49,7 @@ App.Routers.AppRouter = Backbone.Router.extend({
 
     App.Views.lastDay  = new App.Views.LastDay({
       collection: App.Collections.daySale
-    });  
-    console.log(App.Views.lastDay.collection.fetch({url: '/businesses/'+ id + '/sales/last_day'}));
+    });
     App.Views.lastDay.collection.businessId = id;
     App.Collections.weekSale.businessId = id;
     App.Collections.monthSale.businessId = id;
@@ -75,14 +68,12 @@ App.Routers.AppRouter = Backbone.Router.extend({
   },
 
   showMonthSaleGraph: function() {
-    console.log('last month');
     App.Views.lastMonthGraph   = new App.Views.LastMonthSaleGraphView({
       collection: App.Collections.monthSale
     });
   },
 
   showWeekSaleGraph: function() {
-    console.log('last week');
     App.Views.lastWeekGraph   = new App.Views.LastWeekSaleGraphView({
       collection: App.Collections.weekSale
     });

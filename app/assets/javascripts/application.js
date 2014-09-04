@@ -25,7 +25,6 @@
 //= require_tree ./templates
 //= require_tree .
 
-console.log('hello bro');
 App = {
   Models:      {},
   Views:       {},
@@ -34,10 +33,6 @@ App = {
 };
 
 $(document).ready(function() {
-  console.log('document load')
   App.Routers.appRouter = new App.Routers.AppRouter();
   Backbone.history.start();
-
-  
-
 });

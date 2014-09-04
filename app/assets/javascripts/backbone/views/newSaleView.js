@@ -2,10 +2,8 @@ App.Views.NewSaleForm = Backbone.View.extend({
   el: '#new-sale-form',
 
   initialize: function() {
-    console.log('new sale form');
     this.template = HandlebarsTemplates['sales/newSaleForm'];
     this.listenTo(this.collection, 'add', this.render);
-    // this.listenTo(this.collection, 'change', this.render);
     this.render();
   },
 
@@ -19,8 +17,6 @@ App.Views.NewSaleForm = Backbone.View.extend({
   },
 
   newSale: function() {
-    // this.$el.empty();
-    console.log('new form');
     var formData = {
       sale_date    : $('input[name="new-sale-date"]').val(),
       daily_sale   : $('input[name="new-daily-sale"]').val(),
@@ -29,6 +25,5 @@ App.Views.NewSaleForm = Backbone.View.extend({
       notes        : $('textarea[name="new-notes"]').val()
     }
     App.Collections.sale.create(formData);
-    // App.Routers.appRouter.navigate('/#businesses/3', {trigger:true});
   }
 });

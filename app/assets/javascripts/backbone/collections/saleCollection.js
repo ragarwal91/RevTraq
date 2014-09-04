@@ -4,11 +4,7 @@ App.Collections.SalesCollection = Backbone.Collection.extend({
   url: function(){
     return "/businesses/" + this.businessId + "/sales";
   },
-
-  initialize: function() {
-    console.log('sale collection init');  
-  },
-
+  
   save: function() {
     this.each(function(sale) {
       if (!model.has('id') || model.hasChanged()) {model.save();}

@@ -3,10 +3,6 @@ App.Collections.LastWeekSaleCollection = Backbone.Collection.extend({
 
   url: function(){
     return "/businesses/"+this.businessId+"/sales/last_week";
-  },
-
-  initialize: function() {
-    console.log('sale week collection init');  
   }
-
+  
 });

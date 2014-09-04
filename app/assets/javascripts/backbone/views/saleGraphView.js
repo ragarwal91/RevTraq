@@ -2,7 +2,6 @@ App.Views.GraphView = Backbone.View.extend({
   el: '#graph-info',
   
   initialize: function() {
-    console.log('new graph view');
     this.template = HandlebarsTemplates['businesses/graph'];
     this.listenTo(this.collection, 'add', this.render);
     this.listenTo(this.collection, 'change', this.render);
@@ -14,7 +13,6 @@ App.Views.GraphView = Backbone.View.extend({
   render: function(){
     this.$el.empty();
     this.$el.html(this.template(this.collection.toJSON()));
-    console.log('graph render');
     var chart = c3.generate({
       data: {
         x: 'x',
@@ -40,7 +38,6 @@ App.Views.GraphView = Backbone.View.extend({
           }
         }
     });
-    console.log(chart);
   },
 
   events: {
