@@ -1,28 +1,16 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### RevTraq
+RevTraq is a small business revenue tracker. Small business owners will now be able to enter their daily sales and RevTraq will generate a graph visualizing their past sales. The business owners will be able to notice trends depending on the weather and other factors. No more having to write sales on a piece of paper or on Excel.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+### Project Details
+
+Site can be viewed [here](http://www.revtraq.com)
+
+### Technologies Used
+* Ruby on Rails
+* BackBone
+* jQuery
+* PostgreSQL
+* Devise gem
+* CSS3
+* HTML5
