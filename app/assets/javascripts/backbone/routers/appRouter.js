@@ -11,12 +11,19 @@ App.Routers.AppRouter = Backbone.Router.extend({
     App.Models.user           = new App.Models.User();
     App.Models.business       = new App.Models.BusinessInfo();
     App.Collections.sale      = new App.Collections.SalesCollection();
+
     // New Collection for single day sales
     App.Collections.daySale   = new App.Collections.LastDaySaleCollection();
+
     // New Collection for last week sales
     App.Collections.weekSale  = new App.Collections.LastWeekSaleCollection();
+
     // New Collection for last month sales
     App.Collections.monthSale = new App.Collections.LastMonthSaleCollection();
+
+    // New Collection for last year sales
+    App.Collections.yearSale  = new App.Collections.LastYearSaleCollection();
+
     App.Models.sale           = new App.Models.Sale();
     
     
@@ -55,12 +62,21 @@ App.Routers.AppRouter = Backbone.Router.extend({
       collection: App.Collections.daySale
     });
 
+    // Getting View for last year sale
+    App.Views.lastYear  = new App.Views.LastYear({
+      collection: App.Collections.yearSale
+    });
+
     // Adding ID to last day collection
     App.Views.lastDay.collection.businessId = id;
     // Adding ID to last week collection
     App.Collections.weekSale.businessId = id;
     // Adding ID to last month collection
     App.Collections.monthSale.businessId = id;
+
+    // Adding ID to last year collection
+    App.Collections.yearSale.businessId = id;
+    App.Views.lastYear.collection.fetch();
 
     // Fetching last day sale from /businesses/:id/sales/last_day
     App.Views.lastDay.collection.fetch();

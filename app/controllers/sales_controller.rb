@@ -3,6 +3,8 @@ class SalesController < ApplicationController
   before_action :determine_scope
 
   def index
+
+    # Returns JSON all sales that are part of a specific business
     @sales = @scope.all
     render json: @sales
   
@@ -30,7 +32,6 @@ class SalesController < ApplicationController
     if @sale.save
       session[:current_user] = @sale.id
       business = Business.find(params[:business_id])
-      # binding.pry
       business.sales.push(@sale)
       redirect_to business_path(business)
     else
@@ -73,10 +74,10 @@ class SalesController < ApplicationController
   end
 
   # Getting the last years sales and rendering as json
-  def last_year_sales
+  def last_year_sale
     business = Business.find(params[:business_id])
-    @year_sales = business.sales.where("sale_date > ?", 365.days.ago)
-    render json: @year_sales
+    @last_year = business.sales.where(sale_date: 365.days.ago)
+    render json: @last_year
   end
 
   def destroy
@@ -89,8 +90,10 @@ class SalesController < ApplicationController
   private
 
   def determine_scope
+
     # Return sales that only belong to the business
     @scope = params[:business_id] ? Business.find(params[:business_id]).sales : Sale
+
   end
 
   def sale_params

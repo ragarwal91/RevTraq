@@ -1,5 +1,5 @@
 #main-container {width: 80%;float:right;}
-#business-info {width: 45%;float:right;margin-right: 3%;}
+#business-info {width: 46.12%;float:right;margin-right: 3%;}
 #business-info p{margin-left: 15px;}
 #new-sale-form {width: 45%;float:left;margin-bottom: 30px;margin-left: 3%;}
 #new-sale-form input[name="new-sale-date"] {width: 90%;padding: 15px 8px;border: 2px solid #1F77B4;outline:none;margin-left: 15px;}
@@ -8,7 +8,8 @@
 #new-sale-form button {width: 45%;background: #FFF;border:2px solid #1F77B4;padding: 12px 8px;cursor: pointer;margin-left: 26%;font-size: 14px;margin-bottom: 15px;}
 #graph-info {width: 100%;float:left;}
 #chart {width: 80%;float:left;height: 400px;margin-left: 10%;margin-bottom: 30px;padding: 10px 0 10px 0px;}
-#day-sale {width: 45%;float:right; margin-bottom: 20px;margin-right: 3%;}
+#day-sale {width: 23%;float:right; margin-bottom: 20px;}
+#year-sale {width: 23%;float: right;margin-right: 3%;}
 #business-container > div {background: #FFF;border: 1px solid #E9E9E9;}
 #graph-info {background: none !important;border:none !important;padding-left: 10%;width: 600px;margin-bottom: 20px;}
 #graph-info button {background: white; padding: 8px 5px; border: 2px solid #1F77B4;cursor: pointer;outline: none;}
