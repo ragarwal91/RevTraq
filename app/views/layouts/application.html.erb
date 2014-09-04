@@ -15,16 +15,16 @@
       <div id="main-nav">
         <h1><%= link_to('RevTraq', root_path) %></h1>
         <% if user_signed_in? %>
-          Welcome back, <%= current_user.first_name %>! |
-          <a href="/#users/<%= current_user.id %>" class="user-info">My Profile</a>
-          <%#= link_to('My Profile', user_path(current_user, class: "my-profile-link")) %> |
-          <%= link_to('Sign out', destroy_user_session_path, method: :delete)%> |
-          <%#= link_to('New Sales', new_business_sale) %>
-          <ul class="business-list">
+          <p class="welcome-message">Welcome back, <%= current_user.first_name %>!</p>
+          
+          <ul class="header-nav">
+            <li><a href="/#users/<%= current_user.id %>" class="user-info">My Profile</a></li>
             <% current_user.businesses.each do |business| %>
             <li><a class="business-info-link" href="/#businesses/<%= business.id %>"><%= business.name %></a></li>
           <% end %>
+            <li><%= link_to('Sign out', destroy_user_session_path, method: :delete)%></li>
           </ul>
+          
           
         <% else %>
           <%= link_to('Sign in', new_user_session_path) %> |
@@ -35,26 +35,26 @@
       </div>
     </div>
   </div>
-
+  <%= yield %>
   <p class="notice"><%#= notice %></p>
   <p class="alert"><%#= alert %></p>
 
   <div id="main-container">
-    <div id="user-info"></div>
-    <div id="new-sale-form"></div>
-    <div id="business-info"></div>
-    <div id="day-sale"></div>
-    <div id="new-sale-info"></div>
-    <div id="sales"></div>
+    <div id="user-container">
+      <div id="user-info"></div>
+    </div>
     
-    <div id="graph-info"></div>
-    <div id="chart"></div>
-    <div id="last-sale-info"></div>
-    <div id="sale-graph-info"></div>
-  </div>
+    <div id="business-container">
+      <div id="new-sale-form"></div>
+      <div id="business-info"></div>
+      <div id="day-sale"></div>
+      <div id="graph-info"></div>
+      <div id="chart"></div>
+    </div>
+    
+    
 
-  
-<%= yield %>
+  </div>
 
 </body>
 </html>

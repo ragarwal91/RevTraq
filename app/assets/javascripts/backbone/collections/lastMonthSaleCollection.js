@@ -2,7 +2,7 @@ App.Collections.LastMonthSaleCollection = Backbone.Collection.extend({
   model: App.Models.Sale,
 
   url: function(){
-    return "/businesses/19/sales/last_month";
+    return "/businesses/"+ this.businessId +"/sales/last_month";
   },
 
   initialize: function() {

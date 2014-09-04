@@ -31,6 +31,8 @@ App.Routers.AppRouter = Backbone.Router.extend({
   },
 
   showUser: function(id) {
+    $('#user-container').show();
+    $('#business-container').hide();
     App.usersView = new App.Views.UsersView({
       model: App.Models.user
     });
@@ -55,7 +57,10 @@ App.Routers.AppRouter = Backbone.Router.extend({
       collection: App.Collections.daySale
     });  
     console.log(App.Views.lastDay.collection.fetch({url: '/businesses/'+ id + '/sales/last_day'}));
-    App.Views.lastDay.collection.fetch({url: '/businesses/'+ id + '/sales/last_day'});
+    App.Views.lastDay.collection.businessId = id;
+    App.Collections.weekSale.businessId = id;
+    App.Collections.monthSale.businessId = id;
+    App.Views.lastDay.collection.fetch();
 
     App.Views.graph    = new App.Views.GraphView({
       collection: App.Collections.sale
@@ -65,7 +70,8 @@ App.Routers.AppRouter = Backbone.Router.extend({
     App.Views.graph.collection.fetch({reset: true});
     App.Collections.weekSale.fetch({reset: true});
     App.Collections.monthSale.fetch({reset: true});
-
+    $('#business-container').show();
+    $('#user-container').hide();
   },
 
   showMonthSaleGraph: function() {

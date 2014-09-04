@@ -9,6 +9,7 @@ App.Views.LastDay = Backbone.View.extend({
   },
 
   render: function() {
+    this.$el.empty();
     this.collection.each(function(sale) {
       var daySaleView = new App.Views.DailySale({
         model: sale

@@ -11,7 +11,6 @@ App.Views.LastSaleInfo = Backbone.View.extend({
   render: function() {
     this.$el.empty();
     console.log('sale list view rendered');
-    // debugger;
     this.collection.each(function(sale) {
       var saleView = new App.Views.Sale({
         model: sale
