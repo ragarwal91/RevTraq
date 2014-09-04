@@ -17,10 +17,12 @@ App.Views.GraphView = Backbone.View.extend({
       data: {
         x: 'x',
         columns: [
+        // Getting the sale date from the collection
           ["x"].concat(this.collection.map(function(sale) {
             return sale.get('sale_date') 
           })),
           
+          // Getting the daily sale from the collection
           ["Sale"].concat(this.collection.map(function(sale) {
             return sale.get('daily_sale') 
           })),
@@ -46,12 +48,14 @@ App.Views.GraphView = Backbone.View.extend({
   },
 
   showLastMonth: function() {
+    // Changing the collection to the last month sales
     this.collection = App.Collections.monthSale;
     this.listenTo(this.collection, 'reset', this.render);
     this.collection.fetch({reset: true});
   },
 
   showLastWeek: function() {
+    // Changing the collection to the last week sales
     this.collection = App.Collections.weekSale;
     this.listenTo(this.collection, 'reset', this.render);
     this.collection.fetch({reset: true});

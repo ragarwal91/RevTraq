@@ -19,10 +19,12 @@ class SalesController < ApplicationController
 
   def create
     business = Business.find(params[:business_id])
+    # Getting weather data from openweathermap
     @weather_api = Weather.search(business.city)
     api_temp = @weather_api["main"]["temp"].to_s
     api_weather_type = @weather_api["weather"][0]["main"]
     @sale = Sale.new(sale_params)
+    # Saving temperature and weather type automatically
     @sale.temperature  = api_temp
     @sale.weather_type = api_weather_type
     if @sale.save
@@ -49,24 +51,28 @@ class SalesController < ApplicationController
     end
   end
 
+  # Getting the last days sale and rendering as json
   def last_day_sale
     business = Business.find(params[:business_id])
     @day_sale = business.sales.where("sale_date > ?", 1.days.ago)
     render json: @day_sale
   end
 
+  # Getting the last weeks sales and rendering as json
   def last_week_sales
     business = Business.find(params[:business_id])
     @week_sales = business.sales.where("sale_date > ?", 7.days.ago)
     render json: @week_sales
   end
 
+  # Getting the last months sales and rendering as json
   def last_month_sales
     business = Business.find(params[:business_id])
     @month_sales = business.sales.where("sale_date > ?", 30.days.ago)
     render json: @month_sales
   end
 
+  # Getting the last years sales and rendering as json
   def last_year_sales
     business = Business.find(params[:business_id])
     @year_sales = business.sales.where("sale_date > ?", 365.days.ago)
@@ -83,7 +89,7 @@ class SalesController < ApplicationController
   private
 
   def determine_scope
-    # @scope = params[:user_id] ? User.find(params[:user_id]).games : Game
+    # Return sales that only belong to the business
     @scope = params[:business_id] ? Business.find(params[:business_id]).sales : Sale
   end
 

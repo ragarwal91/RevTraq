@@ -9,7 +9,6 @@ class BusinessesController < ApplicationController
     @business = Business.find(params[:id])
     @sale = Sale.new
     @sales = Sale.all
-    @weather_api = Weather.search(@business.city)
     render json: @business
   end  
 
@@ -21,8 +20,6 @@ class BusinessesController < ApplicationController
     @business = Business.new(business_params)
     @business.user_id = current_user.id
     if @business.save
-      # session[:current_user] = @business.id
-      # binding.pry
       redirect_to(root_path)
     else
       render(:new)
