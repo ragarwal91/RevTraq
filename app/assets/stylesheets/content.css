@@ -23,6 +23,7 @@
 .Sunny.weather-type {background: url('https://dl.dropboxusercontent.com/u/54485160/project-3/sun79.png')0 0 no-repeat;width: 64px;height: 64px;display: block;text-indent: -9999px;}
 .notes {margin-left: 15px;}
 
+.business-info-logo {width: 100px;margin-right: 20px;margin-bottom: 20px;float: right;}
 
 
 #log-in-form {float:left;margin-left: 22%;}
