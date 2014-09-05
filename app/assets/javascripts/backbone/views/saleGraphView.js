@@ -44,7 +44,8 @@ App.Views.GraphView = Backbone.View.extend({
 
   events: {
     'click .last-month': 'showLastMonth',
-    'click .last-week': 'showLastWeek'
+    'click .last-week': 'showLastWeek',
+    'click .all-sales': 'showAllSales',
   },
 
   showLastMonth: function() {
@@ -60,6 +61,12 @@ App.Views.GraphView = Backbone.View.extend({
     this.listenTo(this.collection, 'reset', this.render);
     this.collection.fetch({reset: true});
   },
+
+  showAllSales: function() {
+    this.collection = App.Collections.sale;
+    this.listenTo(this.collection, 'reset', this.render);
+    this.collection.fetch({reset: true});
+  }
 
 
 });
