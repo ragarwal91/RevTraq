@@ -10,7 +10,11 @@ App.Routers.AppRouter = Backbone.Router.extend({
   initialize: function() {
     App.Models.user           = new App.Models.User();
     App.Models.business       = new App.Models.BusinessInfo();
+    App.Collections.business  = new App.Collections.BusinessesCollection();
+    App.Models.sale           = new App.Models.Sale();
     App.Collections.sale      = new App.Collections.SalesCollection();
+
+    App.Collections.employee  = new App.Collections.EmployeesCollection();
 
     // New Collection for single day sales
     App.Collections.daySale   = new App.Collections.LastDaySaleCollection();
@@ -24,8 +28,6 @@ App.Routers.AppRouter = Backbone.Router.extend({
     // New Collection for last year sales
     App.Collections.yearSale  = new App.Collections.LastYearSaleCollection();
 
-    App.Models.sale           = new App.Models.Sale();
-    
     
   },
 
@@ -42,6 +44,9 @@ App.Routers.AppRouter = Backbone.Router.extend({
     App.usersView = new App.Views.UsersView({
       model: App.Models.user
     });
+    App.Views.businessForm  = new App.Views.NewBusinessForm({
+      collection: App.Collections.business
+    });
     App.usersView.model.fetch({url: '/users/'+ id})
   },
 
@@ -54,12 +59,16 @@ App.Routers.AppRouter = Backbone.Router.extend({
     });
     App.businessInfoView.model.fetch({url: '/businesses/'+ id});
     App.Views.saleForm  = new App.Views.NewSaleForm({
-      collection: App.Collections.sale
+      collection: App.Collections.sale,
+      collection: App.Collections.employee
     });
+
+    App.Collections.employee.businessId = id;
 
     // Getting View for last day sale
     App.Views.lastDay  = new App.Views.LastDay({
-      collection: App.Collections.daySale
+      collection: App.Collections.daySale,
+      model: App.Models.sale
     });
 
     // Getting View for last year sale
@@ -69,6 +78,7 @@ App.Routers.AppRouter = Backbone.Router.extend({
 
     // Adding ID to last day collection
     App.Views.lastDay.collection.businessId = id;
+    App.Views.lastDay.model.businessId = id;
     // Adding ID to last week collection
     App.Collections.weekSale.businessId = id;
     // Adding ID to last month collection

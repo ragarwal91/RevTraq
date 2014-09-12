@@ -6,13 +6,15 @@ class SalesController < ApplicationController
 
     # Returns JSON all sales that are part of a specific business
     @sales = @scope.all
-    render json: @sales
-  
+    @employees = Employee.all
+    render json: @sales.as_json(:include => [:employees])
   end
 
   def show
     @sale = Sale.find(params[:id])
-    render json: @sale
+    @employees = Employee.all
+    render json: @sale.as_json(:include => [:employees])
+    # render json: @sale
   end
 
   def new
@@ -56,7 +58,9 @@ class SalesController < ApplicationController
   def last_day_sale
     business = Business.find(params[:business_id])
     @day_sale = business.sales.where("sale_date > ?", 1.days.ago)
-    render json: @day_sale
+    @employees = Employee.all
+    render json: @day_sale.as_json(:include => [:employees])
+    # render json: @day_sale
   end
 
   # Getting the last weeks sales and rendering as json
@@ -77,7 +81,8 @@ class SalesController < ApplicationController
   def last_year_sale
     business = Business.find(params[:business_id])
     @last_year = business.sales.where(sale_date: 365.days.ago)
-    render json: @last_year
+    @employees = Employee.all
+    render json: @last_year.as_json(:include => [:employees])
   end
 
   def destroy

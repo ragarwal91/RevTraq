@@ -4,3 +4,8 @@
 <p class="temperature">Today's Temperature: {{temperature}}</p>
 <span class="{{weather_type}} weather-type">{{weather_type}}</span>
 <p class="notes">Notes: {{notes}}</p>
+{{#each employees}}
+  <p class="employee">{{name}} worked.</p>
+{{/each}}
+
+<a href="/#businesses/{{business_id}}/sales/{{id}}/edit" class="edit-sale">Edit Sale</a>

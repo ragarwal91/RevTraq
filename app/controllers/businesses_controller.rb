@@ -9,7 +9,8 @@ class BusinessesController < ApplicationController
     @business = Business.find(params[:id])
     @sale = Sale.new
     @sales = Sale.all
-    render json: @business
+    employees = @business.employees
+    render :json => @business.as_json(:include => [:employees])
   end  
 
   def new

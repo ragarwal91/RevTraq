@@ -4,7 +4,7 @@ App.Views.UsersView = Backbone.View.extend({
 
   initialize: function() {
     this.template = HandlebarsTemplates['users/user'];
-    this.listenTo(this.model, 'change', this.render)
+    this.listenTo(this.model, 'change', this.render);
     this.render();
   },
 

@@ -9,6 +9,12 @@
 
 <textarea name="new-notes" placeholder="Notes on the day" id="" cols="20" rows="5"></textarea>
 
+<select multiple class="select-employee">
+{{#each employees}}
+  <option value="{{name}}">{{name}}</option>
+{{/each}}
+</select>
+
 <button class="new-sale">Save</button>
 
 
