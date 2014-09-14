@@ -9,7 +9,8 @@ App.Views.NewSaleForm = Backbone.View.extend({
 
   render: function() {
     this.$el.empty();
-    this.$el.html(this.template());
+    this.$el.html(this.template(this.model.toJSON()));
+    console.log(this.model);
   },
 
   events: {
@@ -25,5 +26,6 @@ App.Views.NewSaleForm = Backbone.View.extend({
       notes        : $('textarea[name="new-notes"]').val()
     }
     App.Collections.sale.create(formData);
+    console.log(this.model);
   }
 });

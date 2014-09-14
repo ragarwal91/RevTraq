@@ -60,7 +60,7 @@ App.Routers.AppRouter = Backbone.Router.extend({
     App.businessInfoView.model.fetch({url: '/businesses/'+ id});
     App.Views.saleForm  = new App.Views.NewSaleForm({
       collection: App.Collections.sale,
-      collection: App.Collections.employee
+      model: App.Models.business
     });
 
     App.Collections.employee.businessId = id;

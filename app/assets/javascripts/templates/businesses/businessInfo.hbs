@@ -1,3 +1,6 @@
 <h2>{{name}} Info</h2>
 <p>Business Address: {{address}}, {{city}}, {{zip_code}}</p>
 <img src="{{logo}}" class="business-info-logo" alt=""> 
+{{#each employees}}
+  <p>{{name}}</p>
+{{/each}}
