@@ -9,11 +9,12 @@
 
 <textarea name="new-notes" placeholder="Notes on the day" id="" cols="20" rows="5"></textarea>
 
-<select multiple class="select-employee">
-{{#each employees}}
-  <option value="{{name}}">{{name}}</option>
-{{/each}}
-</select>
+<form action="" class="check-employee">
+  {{!-- {{#each employees}} --}}
+    {{!-- <input type="checkbox" name="{{name}}" class="employee-input" data-employee-id="{{id}}" value="{{name}}">{{name}}<br> --}}
+  {{!-- {{/each}} --}}
+</form>
+
 
 <button class="new-sale">Save</button>
 

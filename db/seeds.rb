@@ -36,7 +36,7 @@ Business.create(
 #   user_id: 6
 # )
 
-# Employee.create(name: "Joanne Jameson", business_id: 1)
+# Employee.create(name: "Craig Smith", business_id: 1)
 
 
 

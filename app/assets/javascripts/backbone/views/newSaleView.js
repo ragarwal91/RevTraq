@@ -18,14 +18,21 @@ App.Views.NewSaleForm = Backbone.View.extend({
   },
 
   newSale: function() {
+    var currentEmployees = this.$el.find('.check-employee');
     var formData = {
-      sale_date    : $('input[name="new-sale-date"]').val(),
-      daily_sale   : $('input[name="new-daily-sale"]').val(),
-      temperature  : $('input[name="new-temperature"]').val(),
-      weather_type : $('input[name="new-weather-type"]').val(),
-      notes        : $('textarea[name="new-notes"]').val()
+      sale_date           : $('input[name="new-sale-date"]').val(),
+      daily_sale          : $('input[name="new-daily-sale"]').val(),
+      temperature         : $('input[name="new-temperature"]').val(),
+      weather_type        : $('input[name="new-weather-type"]').val(),
+      notes               : $('textarea[name="new-notes"]').val(),
+      currentEmployeesIds : $.makeArray(currentEmployees.map(function(index, employee) {
+        return $(employee).find('.employee-input').attr('data-employee-id');
+      }))
+      
     }
+    // debugger;
     App.Collections.sale.create(formData);
-    console.log(this.model);
+    console.log(formData.currentEmployeesIds);
   }
+
 });

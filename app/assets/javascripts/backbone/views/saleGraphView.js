@@ -29,7 +29,7 @@ App.Views.GraphView = Backbone.View.extend({
         ]
       },
 
-      color: { pattern: ['#1f77b4'] },
+      color: { pattern: ['#A6A47D'] },
 
         axis: {
           x: {

@@ -9,6 +9,18 @@
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 <body>
+  <div id="index">
+    <div id="home-logo"><h1>RevTraq</h1></div>
+    <% if user_signed_in? %>
+      <p class="go-to-profile"><a href="/#users/<%= current_user.id %>">View your profile, <%= current_user.first_name %></a></p>
+      <p>Not you? <%= link_to('Sign out', destroy_user_session_path, method: :delete)%></p>
+    <% else %>
+      <ul class="not-logged-in-list">
+        <li><%= link_to('Sign in', new_user_session_path) %></li>
+        <li><%= link_to('Sign up', new_user_registration_path) %></li>
+      </ul>
+    <% end %>
+  </div>
   <div id="header-block">
     
     <div id="header-content">
@@ -52,8 +64,10 @@
       <div id="business-info"></div>
       <div id="year-sale"></div>
       <div id="day-sale"></div>
-      <div id="graph-info"></div>
-      <div id="chart"></div>
+      <div id="graph-container">
+        <div id="graph-info"></div>
+        <div id="chart"></div>
+      </div>
     </div>
 
     <div id="employee-container">

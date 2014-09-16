@@ -28,7 +28,14 @@ App.Routers.AppRouter = Backbone.Router.extend({
     // New Collection for last year sales
     App.Collections.yearSale  = new App.Collections.LastYearSaleCollection();
 
+    App.Views.index = new App.Views.Index();
     
+  },
+
+  index: function() {
+      $('#main-container').hide();
+      $('#header-block').hide();
+      App.Views.index.$el.show();
   },
 
   events: {
@@ -41,27 +48,36 @@ App.Routers.AppRouter = Backbone.Router.extend({
   showUser: function(id) {
     $('#user-container').show();
     $('#business-container').hide();
+    $('#index').hide();
     App.usersView = new App.Views.UsersView({
       model: App.Models.user
     });
     App.Views.businessForm  = new App.Views.NewBusinessForm({
       collection: App.Collections.business
     });
-    App.usersView.model.fetch({url: '/users/'+ id})
+    App.usersView.model.fetch({url: '/users/'+ id});
   },
 
   editUser: function(id) {
   },
 
   showBusinessInfo: function(id) {
+    $('#index').hide();
     App.businessInfoView = new App.Views.BusinessInfoView({
       model: App.Models.business
     });
     App.businessInfoView.model.fetch({url: '/businesses/'+ id});
-    App.Views.saleForm  = new App.Views.NewSaleForm({
-      collection: App.Collections.sale,
-      model: App.Models.business
+    App.Models.business.set('id', id);
+    App.Models.business.fetch({
+      reset: true,
+      success: function() {
+        App.Views.saleForm  = new App.Views.NewSaleForm({
+          collection: App.Collections.sale,
+          model: App.Models.business
+        });
+      }
     });
+    
 
     App.Collections.employee.businessId = id;
 

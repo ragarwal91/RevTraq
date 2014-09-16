@@ -1,11 +1,11 @@
-<h2 class="username">{{username}}</h2>
-<h3>Name: {{first_name}} {{last_name}}</h3>
+{{!-- <h2 class="username">{{username}}</h2> --}}
+<h2 class="profile-header">{{first_name}} {{last_name}}'s Profile</h2>
 
 
-<h2>Your Businesses</h2>
+<h3 class="business-header">Your Businesses</h3>
 {{#each businesses}}
-  <h3 class="user-business"><a href="/#businesses/{{id}}">{{name}}</a></h3>
+  <h4 class="user-business"><a href="/#businesses/{{id}}">{{name}}</a></h4>
 {{/each}}
 
-<a href="/#users/{{id}}/edit" class="edit-button">Edit</a>
-<button class="new-business">New Business</button>
+{{!-- <a href="/#users/{{id}}/edit" class="edit-button">Edit</a>
+<button class="new-business">New Business</button> --}}

@@ -1,19 +1,25 @@
-#main-container {width: 80%;float:right;}
-#business-info {width: 46.12%;float:right;margin-right: 3%;}
+#header-block {width: 20%;display: inline-block;}
+#main-container {width: 80%;display: inline-block;margin-left: 20%;}
+#business-info {width: 46.12%;float:right;margin-right: 3%;border-radius: 3px;margin-bottom: 30px;}
+
 #business-info p{margin-left: 15px;}
-#new-sale-form {width: 45%;float:left;margin-bottom: 30px;margin-left: 3%;}
-#new-sale-form input[name="new-sale-date"] {width: 90%;padding: 15px 8px;border: 2px solid #1F77B4;outline:none;margin-left: 15px;}
-#new-sale-form input[name="new-daily-sale"] {width: 90%;padding: 15px 8px;border: 2px solid #1F77B4;outline:none;margin-left: 15px;}
-#new-sale-form textarea {width: 90%;border: 2px solid #1F77B4;resize: none;padding: 15px 8px;outline:none;margin-left: 15px;}
-#new-sale-form button {width: 45%;background: #FFF;border:2px solid #1F77B4;padding: 12px 8px;cursor: pointer;margin-left: 26%;font-size: 14px;margin-bottom: 15px;}
+#new-sale-form {width: 45%;float:left;margin-bottom: 30px;margin-left: 3%;border-radius: 3px;min-height: 610px;}
+#new-sale-form input[name="new-sale-date"] {width: 90%;padding: 15px 8px;border: 1px solid #E9E9E9;outline:none;margin-left: 15px;margin-bottom: 20px;border-radius: 3px;}
+#new-sale-form input[name="new-daily-sale"] {width: 90%;padding: 15px 8px;border: 1px solid #E9E9E9;outline:none;margin-left: 15px;margin-bottom: 20px;border-radius: 3px;}
+#new-sale-form textarea {width: 90%;border: 1px solid #E9E9E9;resize: none;padding: 15px 8px;outline:none;margin-left: 15px;border-radius: 3px;height: 200px;margin-bottom: 20px;}
+#new-sale-form button {width: 45%;background: #282C2C;border: none;padding: 15px 8px;cursor: pointer;margin-left: 26%;font-size: 14px;margin-bottom: 15px;border-radius: 4px;transition: all 0.5s ease;color: #FFF;}
+#new-sale-form button:hover {background: #3f3f3f;}
+#graph-container {width: 94%;display: inline-block;margin-top: 30px;margin-left: 33px;border-radius: 3px;} 
 #graph-info {width: 100%;float:left;}
-#chart {width: 80%;float:left;height: 400px;margin-left: 10%;margin-bottom: 30px;padding: 10px 0 10px 0px;}
-#day-sale {width: 23%;float:right; margin-bottom: 20px;}
-#year-sale {width: 23%;float: right;margin-right: 3%;}
+#chart {width: 100%;height: 400px;margin-bottom: 30px;padding: 10px 0 10px 0px;display: inline-block;}
+#day-sale {width: 23%;float:right; margin-bottom: 20px;min-height: 350px; border-radius: 3px;position: relative;}
+#day-sale .edit-sale {position: absolute;bottom: 10px;right: 10px;color: #282C2C; }
+#year-sale {width: 23%;float: right;margin-right: 3%;min-height: 350px; border-radius: 3px;}
 #business-container > div {background: #FFF;border: 1px solid #E9E9E9;}
-#graph-info {background: none !important;border:none !important;padding-left: 10%;width: 600px;margin-bottom: 20px;}
-#graph-info button {background: white; padding: 8px 5px; border: 2px solid #1F77B4;cursor: pointer;outline: none;}
-#business-container > div h2 {color: #767676; background-color: #f6f6f6; padding: 10px 15px; border-bottom: 1px solid #e9e9e9; line-height: 30px;margin-top: 0;}
+#graph-info {background: none !important;border:none !important;padding-left: 30%;width: 600px;margin-bottom: 20px;margin-top: 20px;}
+#graph-info button {background: #282C2C; padding: 12px 20px; border: none;cursor: pointer;outline: none;border-radius: 2px;transition: all 0.5s ease;color: #FFF;}
+#graph-info button:hover {background: #3f3f3f;}
+#business-container > div h2 {color: #767676; background-color: #f6f6f6; padding: 10px 15px; border-bottom: 1px solid #e9e9e9; line-height: 30px;margin-top: 0;border-top-left-radius:3px;border-top-right-radius:3px;}
 #business-container {margin-top: 2%;}
 
 .sale-date {font-size: 20px;margin-left: 15px;}
@@ -33,3 +39,13 @@
 
 .user-business a{color: #000;text-decoration: none;}
 #new_business {margin-left: 320px;}
+
+#user-container {width: 60%;display: block;margin: 0 auto;background: #FFF;border-radius: 3px; }
+.user-business {margin-left: 15px;}
+.profile-header {color: #767676; background-color: #f6f6f6; padding: 10px 15px; border-bottom: 1px solid #e9e9e9; line-height: 30px; margin-top: 0; border-top-left-radius: 3px; border-top-right-radius: 3px;}
+.business-header {margin-left: 15px;}
+#new-business-form {padding-left: 15px;padding-bottom: 30px;}
+#new-business-form input {width: 45%;border: 1px solid #e9e9e9;border-radius: 3px;padding: 15px 8px;margin-bottom: 20px;}
+#new-business-form input[name="new-business-logo"] {width: 93.4%;}
+#new-business-form button {width: 45%;  background: #282C2C;  border: none; padding: 15px 8px; cursor: pointer; margin-left: 26%; font-size: 14px; margin-bottom: 15px; border-radius: 4px; transition: all 0.5s ease; color: #FFF;}
+#new-business-form button:hover {background: #3f3f3f;}
