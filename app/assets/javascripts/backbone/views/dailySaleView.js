@@ -2,8 +2,9 @@ App.Views.DailySale = Backbone.View.extend({
 
   initialize: function() {
     this.template = HandlebarsTemplates['sales/daySale'];
-    // this.listenTo(this.collection, 'change', this.render);
-    // this.listenTo(this.collection, 'add', this.render);
+    this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'add', this.render);
+    console.log(this.model);
     this.render();
   },
 

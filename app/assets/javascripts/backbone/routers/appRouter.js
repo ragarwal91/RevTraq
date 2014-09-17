@@ -46,9 +46,12 @@ App.Routers.AppRouter = Backbone.Router.extend({
   },
 
   showUser: function(id) {
-    $('#user-container').show();
+    
     $('#business-container').hide();
     $('#index').hide();
+    $('#user-container').show();
+    $('#main-container').show();
+    $('#header-block').show();
     App.usersView = new App.Views.UsersView({
       model: App.Models.user
     });

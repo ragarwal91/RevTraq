@@ -15,7 +15,7 @@
  *= c3
  */
 
- body {font-family: "azo-sans-web",sans-serif;font-weight: 500;background: #F3F3F3;margin: 0;}
+ body {font-family: "Helvetica Neue",sans-serif;font-weight: 200;background: #F3F3F3;margin: 0;letter-spacing: .3px;}
 #index {background: url("rev-traq-bg.jpg") 0 0 no-repeat; display: block; width: 100%; height: 100%; position: absolute; background-size: cover;color #FFF; }
 #index a {color: #FFF;}
 #index p {color: #FFF;}

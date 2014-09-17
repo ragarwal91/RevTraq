@@ -10,7 +10,6 @@ App.Views.NewSaleForm = Backbone.View.extend({
   render: function() {
     this.$el.empty();
     this.$el.html(this.template(this.model.toJSON()));
-    console.log(this.model);
   },
 
   events: {
@@ -30,9 +29,7 @@ App.Views.NewSaleForm = Backbone.View.extend({
       }))
       
     }
-    // debugger;
     App.Collections.sale.create(formData);
-    console.log(formData.currentEmployeesIds);
   }
 
 });
